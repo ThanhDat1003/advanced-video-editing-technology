@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "transcript-video"
+version = "0.1.0"
+description = "Local, resumable Vietnamese video transcription with faster-whisper"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "av>=14,<16",
+  "ctranslate2>=4.5,<5",
+  "faster-whisper>=1.1,<2",
+  "psutil>=6,<8",
+  "pydantic>=2.10,<3",
+  "rich>=13.9,<15",
+  "typer>=0.15,<1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.3,<9"]
+
+[project.scripts]
+transcript-video = "transcript_video.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
